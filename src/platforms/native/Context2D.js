@@ -347,4 +347,12 @@ exports = Class(BufferedCanvas, function (supr) {
 
         return this._ctx.measureText(str + '', font.getSize(), font.getWeight() + ' ' + fontName);
     });
+
+    this.getImageData = function(x, y, width, height) {
+    	return {data: this._ctx.getImageData(x, y, width, height)};
+    };
+
+    this.toDataURL = function(x, y, width, height) {
+    	return 'data:image/png;base64,' + this._ctx.getImagePng(x, y, width, height);
+    }
 });
